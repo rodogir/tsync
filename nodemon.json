@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "dist/server/"
+  ],
+  "ext": "js json",
+  "execMap": {
+    "start": "npm run start"
+  }
+}

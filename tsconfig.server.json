@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/server/",
+    "target": "es6",
+    "module": "commonjs"
+  },
+  "include": [
+    "./src/server/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
