@@ -1,5 +1,25 @@
 {
   "tslint.enable": true,
   "tslint.autoFixOnSave": true,
-  "autoimport.doubleQuotes": true
+  "autoimport.doubleQuotes": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "dist": true,
+    ".awcache": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/node_modules/**": true,
+    "dist": true,
+    ".awcache": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "dist": true,
+    ".awcache": true
+  }
 }
