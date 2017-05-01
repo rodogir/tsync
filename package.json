@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node dist/server/index.js",
     "dev": "npm run build:server && concurrently \"npm run build:server -- -w\" \"nodemon dist/server/index.js\"",
-    "build": "concurrently \"npm run build:server\" \"npm run build:client\"",
+    "build": "npm run clean && concurrently \"npm run build:server\" \"npm run build:client\"",
     "build:server": "tsc -p ./tsconfig.server.json",
     "build:client": "webpack",
     "heroku-postbuild": "npm run build",

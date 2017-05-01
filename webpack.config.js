@@ -6,7 +6,7 @@ module.exports = {
     main: "./src/client/index.tsx",
   },
   output: {
-    filename: "[name].[hash].js",
+    filename: "[name].[chunkhash].js",
     path: path.join(__dirname, "dist/client"),
 
   },
