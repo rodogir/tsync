@@ -1,9 +1,10 @@
 import * as express from 'express';
+import renderHTML from './renderHTML';
 
 const app = express();
 app.disable('x-powered-by');
 app.get('/', (req, res) => {
-  res.send('hello world');
+  res.send(renderHTML());
 })
 
 const port = process.env.PORT || 3000;

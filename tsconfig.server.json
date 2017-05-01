@@ -2,10 +2,12 @@
   "compilerOptions": {
     "outDir": "./dist/server/",
     "target": "es6",
-    "module": "commonjs"
+    "module": "commonjs",
+    "jsx": "react"
   },
   "include": [
-    "./src/server/**/*.ts"
+    "./src/server/**/*.ts",
+    "./src/server/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
