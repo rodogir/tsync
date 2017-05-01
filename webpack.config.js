@@ -1,12 +1,18 @@
+const webpack = require("webpack");
+const path = require("path");
+
 module.exports = {
-  entry: "./src/client/index.tsx",
+  entry: {
+    main: "./src/client/index.tsx",
+  },
   output: {
-    filename: "index.js",
-    path: __dirname + "/dist/client"
+    filename: "[name].[hash].js",
+    path: path.join(__dirname, "dist/client"),
+
   },
   devtool: "source-map",
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
   module: {
     rules: [
@@ -16,9 +22,20 @@ module.exports = {
         options: {
           configFileName: "tsconfig.client.json",
           useCache: true,
-        }
+        },
       },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
-    ]
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+    ],
   },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks(module) {
+        return module.context && module.context.indexOf("node_modules") !== -1;
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "manifest",
+    }),
+  ],
 };
