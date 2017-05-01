@@ -1,6 +1,8 @@
+import * as dotenv from "dotenv";
 import * as express from "express";
 import renderHTML from "./renderHTML";
 
+dotenv.config();
 const app = express();
 app.disable("x-powered-by");
 app.get("/", (req, res) => {
