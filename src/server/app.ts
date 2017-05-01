@@ -4,6 +4,7 @@ import renderHTML from "./renderHTML";
 
 const app = express();
 app.disable("x-powered-by");
+app.use("/assets", express.static(__dirname + "/../assets"));
 app.get("/", (req, res) => {
   res.send(renderHTML());
 });
