@@ -1,5 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
+const AssetsPlugin = require("assets-webpack-plugin");
+
+const distPath = path.join(__dirname, "dist");
 
 module.exports = {
   entry: {
@@ -7,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: "[name].[chunkhash].js",
-    path: path.join(__dirname, "dist/client"),
+    path: path.join(distPath, "client"),
 
   },
   devtool: "source-map",
@@ -37,5 +40,10 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: "manifest",
     }),
+    new AssetsPlugin({
+      path: distPath,
+      filename: "assets.json",
+    }),
+    new webpack.NamedModulesPlugin(),
   ],
 };
