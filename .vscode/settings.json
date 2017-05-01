@@ -1,6 +1,6 @@
 {
   "tslint.enable": true,
-  "tslint.autoFixOnSave": true,
+  "eslint.enable": true,
   "autoimport.doubleQuotes": true,
   "search.exclude": {
     "**/node_modules": true,
@@ -19,7 +19,6 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "dist": true,
     ".awcache": true
   }
 }

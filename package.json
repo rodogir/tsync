@@ -18,7 +18,8 @@
     "build": "concurrently \"npm run build:server\" \"npm run build:client\"",
     "build:server": "tsc -p ./tsconfig.server.json",
     "build:client": "webpack",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@types/dotenv": "4.0.0",
@@ -39,6 +40,9 @@
     "winston": "2.3.1"
   },
   "devDependencies": {
+    "eslint": "3.19.0",
+    "eslint-config-airbnb-base": "11.1.3",
+    "eslint-plugin-import": "2.2.0",
     "nodemon": "1.11.0",
     "tslint": "5.1.0"
   }
