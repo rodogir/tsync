@@ -31,9 +31,9 @@ function HTML({ assetsPath, assets }: Props) {
         👋 Hello World <br />
         🚧 tsync is being created here
         <div id="app" />
-        {/*<script type="text/javascript" src={appendPath(manifest.js)} async />
-        <script type="text/javascript" src={appendPath(vendor.js)} async />*/}
-        <script type="text/javascript" src={appendPath(main.js)} async />
+        <script type="text/javascript" src={appendPath(manifest.js)} />
+        <script type="text/javascript" src={appendPath(vendor.js)} />
+        <script type="text/javascript" src={appendPath(main.js)} />
       </body>
     </html>
   );

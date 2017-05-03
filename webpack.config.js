@@ -31,15 +31,15 @@ module.exports = {
     ],
   },
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: "vendor",
-    //   minChunks(module) {
-    //     return module.context && module.context.indexOf("node_modules") !== -1;
-    //   },
-    // }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: "manifest",
-    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks(module) {
+        return module.context && module.context.indexOf("node_modules") !== -1;
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "manifest",
+    }),
     new AssetsPlugin({
       path: assetsPath,
       filename: "assets.json",
