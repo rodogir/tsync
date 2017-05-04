@@ -3,21 +3,19 @@ import * as ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import App from "./App";
 
-// TODO figure out how to declare components correctly in ts
-const render = (Component: any) => {
+const render = (Component: () => React.ReactElement<any>) => {
   ReactDOM.render(
     <AppContainer>
       <Component />
     </AppContainer>,
-    document.getElementById("root"),
+    document.getElementById("app"),
   );
 };
 
 render(App);
 
-// Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept("./components/App", () => {
+  module.hot.accept("./App", () => {
     render(App);
   });
 }
