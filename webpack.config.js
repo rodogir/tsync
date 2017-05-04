@@ -19,11 +19,6 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
-  devServer: {
-    hot: true,
-    contentBase: resolve(__dirname, "dist/assets"),
-    publicPath: "/",
-  },
   module: {
     rules: [
       {
