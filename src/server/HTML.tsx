@@ -35,7 +35,8 @@ function HTML({ isDevMode, assetsPath, assets }: Props) {
         {manifest && <script type="text/javascript" src={appendPath(manifest.js)} />}
         {vendor && <script type="text/javascript" src={appendPath(vendor.js)} />}
         {main && <script type="text/javascript" src={appendPath(main.js)} />}
-        {isDevMode && <script type="text/javascript" src={appendPath("bundle.js")} />}
+        {isDevMode && <script type="text/javascript" src={appendPath("vendor.js")} />}
+        {isDevMode && <script type="text/javascript" src={appendPath("main.js")} />}
       </body>
     </html>
   );

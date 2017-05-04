@@ -4,13 +4,15 @@ const { join } = require("path");
 const assetsPath = join(__dirname, "dist", "assets");
 
 module.exports = {
-  entry: [
-    "react-hot-loader/patch",
-    "webpack-dev-server/client?http://localhost:3000",
-    "./src/client/index.tsx",
-  ],
+  entry: {
+    main: [
+      "react-hot-loader/patch",
+      "webpack-dev-server/client?http://localhost:3000",
+      "./src/client/index.tsx",
+    ],
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: assetsPath,
     publicPath: "/assets",
   },
@@ -35,5 +37,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks(module) {
+        return module.context && module.context.indexOf("node_modules") !== -1;
+      },
+    }),
   ],
 };
