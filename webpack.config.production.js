@@ -31,6 +31,8 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       minChunks(module) {
@@ -44,6 +46,5 @@ module.exports = {
       path: assetsPath,
       filename: "assets.json",
     }),
-    new webpack.NamedModulesPlugin(),
   ],
 };
