@@ -4,7 +4,8 @@ import * as ReactDOM from "react-dom";
 function App() {
   return (
     <article>
-      <h1>tsync is being built here!</h1>
+      👋 Hello World <br />
+      🚧 tsync is being created here
     </article>);
 }
 

@@ -1,5 +1,5 @@
 import * as express from "express";
-import app from "./app.dev";
+import app from "./app";
 import config from "./config";
 import logger from "./logger";
 import renderHTML from "./renderHTML";

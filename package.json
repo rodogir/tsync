@@ -14,8 +14,7 @@
   },
   "scripts": {
     "start": "node dist/server/index.js",
-    "dev": "npm run build:server && concurrently \"npm run build:server -- -w\" \"nodemon dist/server/index.js\"",
-    "dev2": "webpack-dev-server",
+    "dev": "npm run build:server && concurrently \"webpack-dev-server\" \"npm run build:server -- -w\" \"nodemon dist/server/index.js\"",
     "build": "npm run clean && concurrently \"npm run build:server\" \"npm run build:client\"",
     "build:server": "tsc -p ./tsconfig.server.json",
     "build:client": "webpack --config webpack.config.production.js",

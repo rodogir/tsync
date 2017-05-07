@@ -10,13 +10,12 @@ interface Assets {
   vendor: JsSrc;
 }
 interface Props {
-  isDevMode: boolean;
   assetsPath: string;
-  assets?: Assets;
+  assets: Assets;
 }
 
-function HTML({ isDevMode, assetsPath, assets }: Props) {
-  const { manifest = null, main = null, vendor = null } = assets ? assets : {};
+function HTML({ assetsPath, assets }: Props) {
+  const { manifest, main, vendor } = assets;
   function appendPath(src: string) {
     return `${assetsPath}/${src}`;
   }
@@ -29,14 +28,10 @@ function HTML({ isDevMode, assetsPath, assets }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body>
-        👋 Hello World <br />
-        🚧 tsync is being created here
         <div id="app" />
-        {manifest && <script type="text/javascript" src={appendPath(manifest.js)} />}
-        {vendor && <script type="text/javascript" src={appendPath(vendor.js)} />}
-        {main && <script type="text/javascript" src={appendPath(main.js)} />}
-        {isDevMode && <script type="text/javascript" src={appendPath("vendor.js")} />}
-        {isDevMode && <script type="text/javascript" src={appendPath("main.js")} />}
+        <script type="text/javascript" src={appendPath(manifest.js)} />
+        <script type="text/javascript" src={appendPath(vendor.js)} />
+        <script type="text/javascript" src={appendPath(main.js)} />
       </body>
     </html>
   );
