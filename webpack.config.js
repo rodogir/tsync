@@ -7,7 +7,6 @@ module.exports = {
   entry: {
     main: [
       "react-hot-loader/patch",
-      "webpack-dev-server/client?http://localhost:3000",
       "./src/client/index.tsx",
     ],
   },
@@ -19,6 +18,17 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
+  },
+  devServer: {
+    hot: true,
+    contentBase: join(__dirname, "tools", "public"),
+    publicPath: "/assets",
+    compress: true,
+    port: 3001,
+    historyApiFallback: true,
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
   },
   module: {
     rules: [
@@ -36,7 +46,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       minChunks(module) {

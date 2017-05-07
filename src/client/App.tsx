@@ -2,7 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 function App() {
-  return <h1>React baby!</h1>;
+  return (
+    <article>
+      <h1>tsync is being built here!</h1>
+    </article>);
 }
 
 export default App;
