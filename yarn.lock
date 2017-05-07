@@ -2,12 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/connect@*":
-  version "3.4.30"
-  resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.30.tgz#0a8ede309ce0ebdba2f0534e574692511dd71eb6"
-  dependencies:
-    "@types/node" "*"
-
 "@types/dotenv@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-4.0.0.tgz#bd458844cb82ada047fa87a475270ad55492d2d4"
@@ -62,45 +56,9 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/source-map@*":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@types/source-map/-/source-map-0.5.0.tgz#dd34bbd8e32fe4e74f2e3d8ac07f8aa5b45a47ac"
-
-"@types/tapable@*":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-0.2.3.tgz#0888b0f20cc7e58e1c22a1888b4e963eefaa810a"
-
-"@types/uglify-js@*":
-  version "2.6.28"
-  resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-2.6.28.tgz#1499b48ca3a44132250b318cdde25b8f45f0c616"
-  dependencies:
-    "@types/source-map" "*"
-
-"@types/webpack-dev-middleware@1.9.1":
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/@types/webpack-dev-middleware/-/webpack-dev-middleware-1.9.1.tgz#81e4ba42fb1e2bcd33c3ae2081b02da4604ab7ae"
-  dependencies:
-    "@types/connect" "*"
-    "@types/webpack" "*"
-
 "@types/webpack-env@1.13.0":
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.0.tgz#3044381647e11ee973c5af2e925323930f691d80"
-
-"@types/webpack-hot-middleware@2.15.0":
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/@types/webpack-hot-middleware/-/webpack-hot-middleware-2.15.0.tgz#15c93c44ff2b6369d898df7ef42a374e8ba6780e"
-  dependencies:
-    "@types/connect" "*"
-    "@types/webpack" "*"
-
-"@types/webpack@*", "@types/webpack@2.2.15":
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-2.2.15.tgz#4ad7e9b7a51cae736a1dc783f203610c884789ff"
-  dependencies:
-    "@types/node" "*"
-    "@types/tapable" "*"
-    "@types/uglify-js" "*"
 
 "@types/winston@2.3.1":
   version "2.3.1"
@@ -2765,7 +2723,7 @@ querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
 
-querystring@0.2.0, querystring@^0.2.0:
+querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
@@ -3637,7 +3595,7 @@ wbuf@^1.1.0, wbuf@^1.4.0:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webpack-dev-middleware@1.10.2, webpack-dev-middleware@^1.10.2:
+webpack-dev-middleware@^1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.2.tgz#2e252ce1dfb020dbda1ccb37df26f30ab014dbd1"
   dependencies:
@@ -3667,15 +3625,6 @@ webpack-dev-server@2.4.5:
     supports-color "^3.1.1"
     webpack-dev-middleware "^1.10.2"
     yargs "^6.0.0"
-
-webpack-hot-middleware@2.18.0:
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.18.0.tgz#a16bb535b83a6ac94a78ac5ebce4f3059e8274d3"
-  dependencies:
-    ansi-html "0.0.7"
-    html-entities "^1.2.0"
-    querystring "^0.2.0"
-    strip-ansi "^3.0.0"
 
 webpack-sources@^0.2.3:
   version "0.2.3"
