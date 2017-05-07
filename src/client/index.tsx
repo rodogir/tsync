@@ -1,7 +1,21 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { AppContainer } from "react-hot-loader";
+import App from "./App";
 
-ReactDOM.render(
-  <h1>React baby!</h1>,
-  document.getElementById("app"),
-);
+const render = (Component: () => React.ReactElement<any>) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById("app"),
+  );
+};
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept("./App", () => {
+    render(require("./App").default);
+  });
+}

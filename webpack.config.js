@@ -1,21 +1,34 @@
 const webpack = require("webpack");
-const path = require("path");
-const AssetsPlugin = require("assets-webpack-plugin");
+const { join } = require("path");
 
-const assetsPath = path.join(__dirname, "dist", "assets");
+const assetsPath = join(__dirname, "dist", "assets");
 
 module.exports = {
   entry: {
-    main: "./src/client/index.tsx",
+    main: [
+      "react-hot-loader/patch",
+      "./src/client/index.tsx",
+    ],
   },
   output: {
-    filename: "[name].[chunkhash].js",
+    filename: "[name].js",
     path: assetsPath,
-
+    publicPath: "/assets",
   },
   devtool: "source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
+  },
+  devServer: {
+    hot: true,
+    contentBase: join(__dirname, "tools", "public"),
+    publicPath: "/assets",
+    compress: true,
+    port: 3001,
+    historyApiFallback: true,
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
   },
   module: {
     rules: [
@@ -31,19 +44,13 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       minChunks(module) {
         return module.context && module.context.indexOf("node_modules") !== -1;
       },
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "manifest",
-    }),
-    new AssetsPlugin({
-      path: assetsPath,
-      filename: "assets.json",
-    }),
-    new webpack.NamedModulesPlugin(),
   ],
 };

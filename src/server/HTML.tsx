@@ -28,8 +28,6 @@ function HTML({ assetsPath, assets }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body>
-        👋 Hello World <br />
-        🚧 tsync is being created here
         <div id="app" />
         <script type="text/javascript" src={appendPath(manifest.js)} />
         <script type="text/javascript" src={appendPath(vendor.js)} />

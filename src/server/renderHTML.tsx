@@ -8,8 +8,8 @@ const assets: Assets = require("../assets/assets.json");
 function renderHTML(): string {
   return renderToStaticMarkup(
     <HTML
-      assetsPath={config.PUBLIC_ASSETS_PATH}
       assets={assets}
+      assetsPath={config.PUBLIC_ASSETS_PATH}
     />);
 }
 
