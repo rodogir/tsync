@@ -20,7 +20,7 @@ function HTML({ assetsPath, assets }: Props) {
     return `${assetsPath}/${src}`;
   }
   return (
-    <html lang="en">
+    <html>
       <head/>
       <body>
         <div id="app" />
