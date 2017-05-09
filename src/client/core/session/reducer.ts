@@ -1,8 +1,6 @@
 import { Action } from "redux";
 
-export const STATE_IDENTIFIER = "session";
-
-interface State {
+export interface State {
   isLoggedIn: boolean;
 }
 
