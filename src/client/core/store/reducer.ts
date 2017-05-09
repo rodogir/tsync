@@ -1,11 +1,12 @@
-import { Action } from "redux";
+import { Action, combineReducers } from "redux";
+import sessionReducer, { STATE_IDENTIFIER as SESSION_STATE_IDENTIFIER } from "../session/reducer";
 
 interface State {
   [reducerNs: string]: object;
 }
 
-function reducer(state: State = {}, action: Action): State {
-  return state;
-}
+const reducer = combineReducers({
+  [SESSION_STATE_IDENTIFIER]: sessionReducer,
+});
 
 export default reducer;
