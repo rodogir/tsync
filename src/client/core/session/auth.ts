@@ -15,5 +15,18 @@ function show() {
   return lock.show();
 }
 
+interface AuthResult {
+  accessToken: string;
+  idToken: string;
+  refreshToken: string;
+}
+
+function onAuthenticated(callback: (authResult: AuthResult) => void) {
+  lock.on("authenticated", (authResult: AuthResult) => {
+    callback(authResult);
+    lock.hide();
+  });
+}
+
 export default lock;
-export { show };
+export { show, onAuthenticated, AuthResult };
