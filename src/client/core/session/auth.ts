@@ -18,12 +18,11 @@ function show() {
 interface AuthResult {
   accessToken: string;
   idToken: string;
-  refreshToken: string;
 }
 
-function onAuthenticated(callback: (authResult: AuthResult) => void) {
-  lock.on("authenticated", (authResult: AuthResult) => {
-    callback(authResult);
+function onAuthenticated(callback: (token: string) => void) {
+  lock.on("authenticated", ({ idToken }: AuthResult) => {
+    callback(idToken);
     lock.hide();
   });
 }
