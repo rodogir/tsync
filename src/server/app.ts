@@ -10,7 +10,7 @@ app.use("/assets", express.static(__dirname + "/../assets", {
 
 if (config.isProd) {
   const renderHTML = require("./renderHTML").default;
-  app.get("/", (req, res) => {
+  app.get("*", (req, res) => {
     res.send(renderHTML());
   });
 }

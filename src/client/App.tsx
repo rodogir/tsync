@@ -2,6 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import { Link, Route, Switch } from "react-router-dom";
+import LoginOverlay from "./components/LoginOverlay";
+import SessionProvider from "./core/session/SessionProvider";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <title>⚡🕗 TSYNC</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
+      <SessionProvider />
+      <LoginOverlay />
       <Switch>
         <Route exact path="/" render={() => {
           return (
@@ -22,7 +26,6 @@ function App() {
             </div>
           );
         }} />
-        <Route exact path="/login" render={() => <div>🚧 log in here soon</div>} />
       </Switch>
     </div>);
 }
