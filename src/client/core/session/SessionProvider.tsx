@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 import { Action } from "redux";
-import { sessionEstablished } from "./actions";
+import { userAuthenticated } from "./actions";
 import { AuthResult, onAuthenticated } from "./auth";
 
 interface ConnectedProps {
@@ -21,7 +21,7 @@ class SessionProvider extends React.Component<ConnectedProps, void> {
 function mapDispatchToProps(dispatch: Dispatch<Action>): ConnectedProps {
   return {
     dispatchSessionEstablished: (token: string) =>
-      dispatch(sessionEstablished(token)),
+      dispatch(userAuthenticated(token)),
   };
 }
 

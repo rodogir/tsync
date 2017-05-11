@@ -1,4 +1,6 @@
+import { assoc } from "ramda";
 import { Action } from "redux";
+import { SESSION_ESTABLISHED } from "./constants";
 
 export interface State {
   isLoggedIn: boolean;
@@ -9,7 +11,12 @@ const initialState: State = {
 };
 
 function reducer(state: State = initialState, action: Action) {
-  return state;
+  switch (action.type) {
+    case SESSION_ESTABLISHED:
+      return assoc("isLoggedIn", true, state);
+    default:
+      return state;
+  }
 }
 
 export default reducer;
