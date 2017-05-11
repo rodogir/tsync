@@ -8,6 +8,12 @@ const lock = new Auth0Lock(clientId, domain, {
     redirect: false,
     responseType: "token",
   },
+  closable: false,
 });
 
+function show() {
+  return lock.show();
+}
+
 export default lock;
+export { show };
