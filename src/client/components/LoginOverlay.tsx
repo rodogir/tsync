@@ -1,6 +1,6 @@
 import * as React from "react";
 import { State as SessionState } from "../core/session/reducer";
-import WithSession from "../core/session/WithSession";
+import WithSession, { Session } from "../core/session/WithSession";
 
 /**
  * Will display the auth0 lock in an overlay whenever the user is not logged in.
@@ -8,7 +8,12 @@ import WithSession from "../core/session/WithSession";
 function LoginOverlay() {
   return (
     <WithSession>
-      <div/>
+      {({ isLoggedIn }: Session) => {
+        if (isLoggedIn) { return null; }
+        return (
+          <div>🚧 log in here soon</div>
+        );
+      }}
     </WithSession>
   );
 }
