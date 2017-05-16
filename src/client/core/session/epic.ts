@@ -1,9 +1,10 @@
 import { Action } from "redux";
-import { ActionsObservable } from "redux-observable";
+import { ActionsObservable, combineEpics } from "redux-observable";
+import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
-import { sessionEstablished, UserAuthenticated } from "./actions";
-import { USER_AUTHENTICATED } from "./constants";
+import { sessionEstablished, SessionEstablished, UserAuthenticated } from "./actions";
+import { RESUMPTION_REQUESTED, USER_AUTHENTICATED } from "./constants";
 
 function establishedEpic(action$: ActionsObservable<Action>) {
   return action$
@@ -14,4 +15,20 @@ function establishedEpic(action$: ActionsObservable<Action>) {
     });
 }
 
-export default establishedEpic;
+function resumeEpic(action$: ActionsObservable<Action>) {
+  return action$
+    .ofType(RESUMPTION_REQUESTED)
+    .map(() => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        return sessionEstablished();
+      }
+      return null;
+    })
+    .filter((a: SessionEstablished | null) => a !== null);
+}
+
+export default combineEpics(
+  establishedEpic,
+  resumeEpic,
+);

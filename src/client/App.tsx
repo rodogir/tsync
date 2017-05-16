@@ -22,7 +22,6 @@ function App() {
             <div>
               👋 Hello World <br />
               🚧 tsync is being created here
-              <Link to="/login">Login</Link>
             </div>
           );
         }} />

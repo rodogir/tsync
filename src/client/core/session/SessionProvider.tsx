@@ -1,27 +1,33 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 import { Action } from "redux";
-import { userAuthenticated } from "./actions";
+import { sessionResumptionRequested, userAuthenticated } from "./actions";
 import { AuthResult, onAuthenticated } from "./auth";
 
 interface ConnectedProps {
-  dispatchSessionEstablished: (token: string) => void;
+  dispatchUserAuthenticated: (token: string) => void;
+  dispatchResumptionRequested: () => void;
 }
 
 class SessionProvider extends React.Component<ConnectedProps, void> {
+  constructor(props: ConnectedProps) {
+    super(props);
+    props.dispatchResumptionRequested();
+  }
+
   public render(): null {
     return null;
   }
 
   private componentDidMount() {
-    onAuthenticated(this.props.dispatchSessionEstablished);
+    onAuthenticated(this.props.dispatchUserAuthenticated);
   }
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ConnectedProps {
   return {
-    dispatchSessionEstablished: (token: string) =>
-      dispatch(userAuthenticated(token)),
+    dispatchResumptionRequested: () => dispatch(sessionResumptionRequested()),
+    dispatchUserAuthenticated: (token: string) => dispatch(userAuthenticated(token)),
   };
 }
 
