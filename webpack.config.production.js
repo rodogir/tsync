@@ -37,7 +37,8 @@ module.exports = {
         NODE_ENV: JSON.stringify("production"),
       },
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    // TODO: find a way to make uglify work again. It has problems with the ES5 emitted by TS.
+    // new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       minChunks(module) {
