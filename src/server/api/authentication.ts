@@ -1,11 +1,15 @@
 import { NextFunction, Request, Response } from "express";
+import * as fs from "fs";
 import { verify } from "jsonwebtoken";
+import * as path from "path";
 import logger from "../logger";
-import jwtPublicKey from "./jwtPublicKey";
+
+const certPath = path.join(__dirname, "../../../resources/tsync.pem");
+const cert = fs.readFileSync(certPath);
 
 function authentication(req: Request, res: Response, next: NextFunction) {
-  const token = req.get("authorization-tsync");
-  verify(token, jwtPublicKey, {
+  const token = req.get("tsync-auth");
+  verify(token, cert, {
     algorithms: ["RS256"],
     audience: "pkeI_yMD6HuLsf12zPy_yPvL1-yvNZHZ",
     clockTolerance: 300,

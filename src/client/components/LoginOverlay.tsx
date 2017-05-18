@@ -10,8 +10,8 @@ function LoginOverlay() {
   return (
     <WithSession>
       {({ isLoggedIn }: Session) => {
-        if (isLoggedIn) { return null; }
-        return <LoginLock />;
+        if (isLoggedIn === false) { return <LoginLock />; }
+        return null;
       }}
     </WithSession>
   );

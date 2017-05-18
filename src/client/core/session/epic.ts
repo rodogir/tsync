@@ -1,16 +1,22 @@
 import { Action } from "redux";
 import { ActionsObservable, combineEpics } from "redux-observable";
+import "rxjs/add/observable/fromPromise";
+import "rxjs/add/observable/of";
+import "rxjs/add/operator/catch";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
 import { Observable } from "rxjs/Observable";
-import { sessionEstablished, SessionEstablished, UserAuthenticated } from "./actions";
+import { verifyToken } from "../api/index";
+import { sessionEstablished, SessionEstablished, sessionTimedOut, UserAuthenticated } from "./actions";
 import { RESUMPTION_REQUESTED, USER_AUTHENTICATED } from "./constants";
+import { getToken, setToken } from "./token";
 
 function establishedEpic(action$: ActionsObservable<Action>) {
   return action$
     .ofType(USER_AUTHENTICATED)
     .map((action: UserAuthenticated) => {
-      localStorage.setItem("token", action.data.token);
+      setToken(action.data.token);
       return sessionEstablished();
     });
 }
@@ -18,14 +24,10 @@ function establishedEpic(action$: ActionsObservable<Action>) {
 function resumeEpic(action$: ActionsObservable<Action>) {
   return action$
     .ofType(RESUMPTION_REQUESTED)
-    .map(() => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        return sessionEstablished();
-      }
-      return null;
-    })
-    .filter((a: SessionEstablished | null) => a !== null);
+    .mergeMap((action) =>
+      Observable.fromPromise(verifyToken())
+        .map(sessionEstablished)
+        .catch((error) => Observable.of(sessionTimedOut())));
 }
 
 export default combineEpics(

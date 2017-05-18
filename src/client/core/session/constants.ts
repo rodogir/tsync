@@ -1,3 +1,4 @@
 export const USER_AUTHENTICATED: "session/USER_AUTHENTICATED" = "session/USER_AUTHENTICATED";
 export const SESSION_ESTABLISHED: "session/ESTABLISHED" = "session/ESTABLISHED";
+export const SESSION_TIMED_OUT: "session/TIMED_OUT" = "session/TIMED_OUT";
 export const RESUMPTION_REQUESTED: "session/RESUMPTION_REQUESTED" = "session/RESUMPTION_REQUESTED";
