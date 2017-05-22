@@ -1,15 +1,11 @@
 import { getToken } from "../session/token";
+import fetch from "./fetch";
 
 async function authenticatedFetch(input: RequestInfo, init: RequestInit) {
   const headers = init.headers || new Headers();
   headers.set("tsync-auth", getToken());
   init.headers = headers;
-  return fetch(input, init).then((response) => {
-    if (response.ok) {
-      return response;
-    }
-    throw new Error("Network response was not ok.");
-  });
+  return fetch(input, init);
 }
 
 export async function verifyToken() {
